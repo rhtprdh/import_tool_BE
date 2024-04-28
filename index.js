@@ -16,8 +16,14 @@ import EntityRoutes from './src/routes/EntityRoutes.js'
 import AddonRoutes from './src/routes/AddonRoutes.js'
 import SeriesRoutes from './src/routes/SeriesRoutes.js';
 import StaxRoutes from './src/routes/StaxRoutes.js';
+import cors from 'cors';
+
 
 const app = express()
+app.use(cors());
+// app.use(cors({
+//   origin: 'https://main.dqarydrxv5g54.amplifyapp.com'
+// }));
 // const router = Router()
 app.use(express.json());
 app.use('/api/division', routes); 

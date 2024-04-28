@@ -1,10 +1,10 @@
-import  express from 'express';
-import WeighmentDAta from '../WeighmentDAta/WeightmentData.js';
+// import  express from 'express';
+// import WeighmentDAta from '../WeighmentDAta/WeightmentData.js';
 
-const QrTagWeightRoutes = express.Router();
+// const QrTagWeightRoutes = express.Router();
 
 
-// QrTagWeightRoutes.get('/getSerialData', WeightmentData.serialData);
-QrTagWeightRoutes.get('/getSerialData', WeighmentDAta);
+// // QrTagWeightRoutes.get('/getSerialData', WeightmentData.serialData);
+// QrTagWeightRoutes.get('/getSerialData', WeighmentDAta);
 
-export default QrTagWeightRoutes;
+// export default QrTagWeightRoutes;

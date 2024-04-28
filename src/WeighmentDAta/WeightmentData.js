@@ -70,27 +70,27 @@
 
 
 
-import express from 'express';
-import fs from 'fs';
-import os from 'os';
+// import express from 'express';
+// import fs from 'fs';
+// import os from 'os';
 
-const WeighmentData = express();
+// const WeighmentData = express();
 
-WeighmentData.get('/readFile', (req, res) => {
-  console.log("req is come")
-  const systemDrive = os.platform() === 'win32' ? os.homedir().split(path.sep)[0] : '/';
+// WeighmentData.get('/readFile', (req, res) => {
+//   console.log("req is come")
+//   const systemDrive = os.platform() === 'win32' ? os.homedir().split(path.sep)[0] : '/';
 
-  const filePath = 'D:/wbdata.wbg';
-  // const filePath = `${systemDrive}/wbdata.wbg`;
+//   const filePath = 'D:/wbdata.wbg';
+//   // const filePath = `${systemDrive}/wbdata.wbg`;
 
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send('Error reading file');
-    }
-    // req.send("get req come")
-    res.send(data);
-  });
-});
+//   fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send('Error reading file');
+//     }
+//     // req.send("get req come")
+//     res.send(data);
+//   });
+// });
 
-export default WeighmentData;
+// export default WeighmentData;

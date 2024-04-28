@@ -30,6 +30,9 @@ app.use('/api/entity', EntityRoutes);
 app.use('/api/addon', AddonRoutes);
 app.use('/api/series', SeriesRoutes);
 app.use('/api/stax', StaxRoutes);
+app.get('/api/success', (req, res) => {
+  res.status(200).json({ message: "Successfully received GET request" });
+});
 
 app.listen(process.env.PORT, () => {
         console.log(`Example app listening on port ${process.env.PORT}`)

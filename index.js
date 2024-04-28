@@ -9,8 +9,8 @@ import routes from './src/routes/divisionRoutes.js'
 import ConnectDB from './src/db/ConnnectDB.js'
 import CropYearRoutes from './src/routes/CropYearRoutes.js'
 import QRTagRoutes from './src/routes/QrTagRoutes.js'
-import QrTagWeightRoutes from './src/routes/QrTagWeightRoutes.js'
-import WeighmentData from './src/WeighmentDAta/WeightmentData.js'
+// import QrTagWeightRoutes from './src/routes/QrTagWeightRoutes.js'
+// import WeighmentData from './src/WeighmentDAta/WeightmentData.js'
 import CbjVrSeqRoutes from './src/routes/CbjVrSeqRoutes.js'
 import EntityRoutes from './src/routes/EntityRoutes.js'
 import AddonRoutes from './src/routes/AddonRoutes.js'
@@ -23,8 +23,8 @@ app.use(express.json());
 app.use('/api/division', routes); 
 app.use('/api/qrtag', QRTagRoutes); 
 app.use('/api/crop-year', CropYearRoutes);
-app.use('/api/qrtag/weight', QrTagWeightRoutes)
-app.use('/api/weight', WeighmentData);
+// app.use('/api/qrtag/weight', QrTagWeightRoutes)
+// app.use('/api/weight', WeighmentData);
 app.use('/api/vrseq', CbjVrSeqRoutes );
 app.use('/api/entity', EntityRoutes);
 app.use('/api/addon', AddonRoutes);

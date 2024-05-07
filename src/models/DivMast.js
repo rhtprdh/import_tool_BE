@@ -41,7 +41,7 @@ DivMast.getAll = function (filters,result) {
 
   if (Object.keys(filters).length > 0) {
     const filterConditions = Object.keys(filters)
-    .filter(key => key !== 'div_code' && key !== 'series_code')
+    .filter(key => key !== 'div_code' && key !== 'series_code' && key !=='tran_type')
     .map(key => `s.${key} = ?`);
     if (filterConditions.length > 0) {
       sql += ` where `;
@@ -50,6 +50,8 @@ DivMast.getAll = function (filters,result) {
   }
 }
   ConnectionDB.query(sql, values, (err, res) => {
+    console.log(sql);
+    console.log(values);
     if (err) {
       console.error('Error executing SQL query:', err);
       result(err, null);

@@ -46,7 +46,7 @@ SeriesMast.update = function (updateSeries, result) {
 };
 
 SeriesMast.getAll = function (filters,result) {
-  let sql = `SELECT s.series_code, s.series_name, s.entity_code, e.entity_name, s.div_code,d.div_name, s.post_code, s.bankId, s.tran_type, s.series_type FROM qrtag.series_mast s JOIN qrtag.entity_mast e ON s.entity_code = e.entity_code JOIN qrtag.div_mast d ON s.div_code = d.div_code`;
+  let sql = `SELECT s.series_code, s.series_name, s.entity_code, e.entity_name, s.div_code,d.div_name, s.post_code, s.bankId, s.tran_type, s.series_type,s.state_code FROM qrtag.series_mast s JOIN qrtag.entity_mast e ON s.entity_code = e.entity_code JOIN qrtag.div_mast d ON s.div_code = d.div_code`;
   // const values = [slugValue];
   const values = [];
 
@@ -59,10 +59,12 @@ SeriesMast.getAll = function (filters,result) {
     if (filterConditions.length > 0) {
       sql += ` where `;
     sql += filterConditions.join(' AND ');
-    values.push(...Object.values(filters));
+    values.push(...Object.values(filters).filter(value => value !==filters.series_code));
   }
 }
   ConnectionDB.query(sql, values, (err, res) => {
+    console.log(sql);
+    console.log(values);
     if (err) {
       console.error('Error executing SQL query:', err);
       // res.status(500).json({ error: 'Internal server error' });
@@ -86,7 +88,7 @@ SeriesMast.getAll = function (filters,result) {
 SeriesMast.findById = function (value, result) {
  
   
-  ConnectionDB.query('SELECT s.series_code, s.series_name, s.entity_code, e.entity_name, s.div_code,d.div_name, s.post_code, s.bankId, s.tran_type, s.series_type FROM qrtag.series_mast s JOIN qrtag.entity_mast e ON s.entity_code = e.entity_code JOIN qrtag.div_mast d ON s.div_code = d.div_code where series_code = ?', value, (err, res) => {
+  ConnectionDB.query('SELECT s.series_code, s.series_name, s.entity_code, e.entity_name, s.div_code,d.div_name, s.post_code, s.bankId, s.tran_type, s.series_type, s.state_code FROM qrtag.series_mast s JOIN qrtag.entity_mast e ON s.entity_code = e.entity_code JOIN qrtag.div_mast d ON s.div_code = d.div_code where series_code = ?', value, (err, res) => {
     if (err) {
       result(err, null);
       return;

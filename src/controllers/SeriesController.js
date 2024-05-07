@@ -40,6 +40,7 @@ const SeriesController = {
       bankId   : req.body.bankId,
       tran_type : req.body.tran_type,
       series_type : req.body.series_type,
+      state_code : req.body.state_code,
     });
     const series_code = req.params.series_code;
     // if()

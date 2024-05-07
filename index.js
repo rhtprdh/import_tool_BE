@@ -17,14 +17,31 @@ import AddonRoutes from './src/routes/AddonRoutes.js'
 import SeriesRoutes from './src/routes/SeriesRoutes.js';
 import StaxRoutes from './src/routes/StaxRoutes.js';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 
 const app = express()
 app.use(cors());
-// app.use(cors({
-//   origin: 'https://main.dqarydrxv5g54.amplifyapp.com'
-// }));
-// const router = Router()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(cors());
+// app.use(express.static(path.join(__dirname, '../../ERP_data_import_tool/dist')));
+
+// // app.use(cors({
+// //   origin: 'https://main.dqarydrxv5g54.amplifyapp.com'
+// // }));
+// // const router = Router()
+
+app.use(express.static(path.join(__dirname, '../../ERP_data_import_tool/dist')));
+app.get('*', (req, res, next) => {
+  if (!req.path.startsWith('/api/')) {
+    res.sendFile(path.join(__dirname, '../../ERP_data_import_tool/dist', 'index.html'));
+  } else {
+    next();
+  }
+});
 app.use(express.json());
 app.use('/api/division', routes); 
 app.use('/api/qrtag', QRTagRoutes); 
